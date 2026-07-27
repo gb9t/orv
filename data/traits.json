@@ -1,0 +1,152 @@
+{
+  "_comment": "modifiers[].target is one of: stat, skill, allSkills, resource, special. type is flat or percent. Add new traits by copying the shape of an existing one.",
+
+  "positive": [
+    {
+      "id": "strong_mind",
+      "name": "Strong Mind",
+      "points": 2,
+      "description": "A disciplined, resilient psyche that resists manipulation and mental strain.",
+      "modifiers": [{ "target": "stat", "key": "wisdom", "type": "flat", "value": 1 }]
+    },
+    {
+      "id": "quick_reflexes",
+      "name": "Quick Reflexes",
+      "points": 2,
+      "description": "Reacts a half-step before everyone else in the room.",
+      "modifiers": [{ "target": "skill", "key": "acrobatics", "type": "flat", "value": 2 }]
+    },
+    {
+      "id": "lucky",
+      "name": "Lucky",
+      "points": 3,
+      "description": "Fortune leans this character's way more often than chance allows.",
+      "modifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": 2 }]
+    },
+    {
+      "id": "brave",
+      "name": "Brave",
+      "points": 1,
+      "description": "Steps toward danger when others step back.",
+      "modifiers": [{ "target": "skill", "key": "intimidation", "type": "flat", "value": 2 }]
+    },
+    {
+      "id": "genius",
+      "name": "Genius",
+      "points": 3,
+      "description": "Processes problems most people would need hours for in seconds.",
+      "modifiers": [{ "target": "stat", "key": "intelligence", "type": "flat", "value": 1 }]
+    },
+    {
+      "id": "agile",
+      "name": "Agile",
+      "points": 2,
+      "description": "Light on their feet, hard to pin down.",
+      "modifiers": [{ "target": "stat", "key": "dexterity", "type": "flat", "value": 1 }]
+    },
+    {
+      "id": "tough",
+      "name": "Tough",
+      "points": 2,
+      "description": "Shrugs off punishment that would drop most people.",
+      "modifiers": [{ "target": "resource", "key": "maxHp", "type": "percent", "value": 10 }]
+    },
+    {
+      "id": "calm",
+      "name": "Calm",
+      "points": 1,
+      "description": "Reads a room without ever raising their own pulse.",
+      "modifiers": [{ "target": "skill", "key": "insight", "type": "flat", "value": 2 }]
+    },
+    {
+      "id": "fast_learner",
+      "name": "Fast Learner",
+      "points": 2,
+      "description": "Picks up new ground faster than most, session after session.",
+      "modifiers": [{ "target": "special", "key": "experienceMultiplier", "type": "percent", "value": 10 }]
+    },
+    {
+      "id": "keen_eyes",
+      "name": "Keen Eyes",
+      "points": 1,
+      "description": "Notices the detail everyone else walks past.",
+      "modifiers": [
+        { "target": "skill", "key": "perception", "type": "flat", "value": 2 },
+        { "target": "skill", "key": "investigation", "type": "flat", "value": 2 }
+      ]
+    }
+  ],
+
+  "negative": [
+    {
+      "id": "frail",
+      "name": "Frail",
+      "points": 2,
+      "description": "Wounds that would be minor on someone else linger and cut deeper here.",
+      "modifiers": [{ "target": "resource", "key": "maxHp", "type": "percent", "value": -10 }]
+    },
+    {
+      "id": "reckless",
+      "name": "Reckless",
+      "points": 1,
+      "description": "Leaps first, and rarely checks how far down the drop is.",
+      "modifiers": [{ "target": "stat", "key": "wisdom", "type": "flat", "value": -1 }]
+    },
+    {
+      "id": "greedy",
+      "name": "Greedy",
+      "points": 1,
+      "description": "Struggles to hide their interest the moment coin or loot is on the table.",
+      "modifiers": [{ "target": "skill", "key": "persuasion", "type": "flat", "value": -2 }]
+    },
+    {
+      "id": "slow",
+      "name": "Slow",
+      "points": 2,
+      "description": "A half-beat behind whenever speed matters most.",
+      "modifiers": [{ "target": "stat", "key": "dexterity", "type": "flat", "value": -1 }]
+    },
+    {
+      "id": "clumsy",
+      "name": "Clumsy",
+      "points": 1,
+      "description": "Footing and timing betray them at the worst moments.",
+      "modifiers": [{ "target": "skill", "key": "acrobatics", "type": "flat", "value": -2 }]
+    },
+    {
+      "id": "cowardly",
+      "name": "Cowardly",
+      "points": 2,
+      "description": "The instinct to flee is louder than the instinct to fight.",
+      "modifiers": [{ "target": "skill", "key": "intimidation", "type": "flat", "value": -2 }]
+    },
+    {
+      "id": "short_temper",
+      "name": "Short Temper",
+      "points": 1,
+      "description": "Patience runs out long before the conversation is over.",
+      "modifiers": [{ "target": "skill", "key": "deception", "type": "flat", "value": -2 }]
+    },
+    {
+      "id": "weak_constitution",
+      "name": "Weak Constitution",
+      "points": 2,
+      "description": "Tires and strains faster than their frame should allow.",
+      "modifiers": [{ "target": "resource", "key": "maxStamina", "type": "percent", "value": -10 }]
+    },
+    {
+      "id": "forgetful",
+      "name": "Forgetful",
+      "points": 1,
+      "description": "Details slip through the cracks, especially old ones.",
+      "modifiers": [{ "target": "skill", "key": "history", "type": "flat", "value": -2 }]
+    },
+    {
+      "id": "overconfident",
+      "name": "Overconfident",
+      "points": 1,
+      "description": "Certain of their own read on people, right up until they are wrong.",
+      "modifiers": [{ "target": "skill", "key": "insight", "type": "flat", "value": -2 }]
+    }
+  ]
+}

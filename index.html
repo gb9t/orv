@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Window // Player Panel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/player.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <nav class="app-nav" data-role="app-nav"></nav>
+  <main class="app-main" data-role="app-main"></main>
+</div>
+
+<!-- Core, in dependency order -->
+<script src="js/core/utils.js"></script>
+<script src="js/core/ui.js"></script>
+<script src="js/core/storage.js"></script>
+<script src="js/core/state.js"></script>
+<script src="js/core/dataLoader.js"></script>
+
+<!-- Modules -->
+<script src="js/modules/characterModel.js"></script>
+<script src="js/modules/entryBrowser.js"></script>
+<script src="js/modules/diceRoller.js"></script>
+<script src="js/modules/skillChecks.js"></script>
+<script src="js/modules/characterCreation.js"></script>
+<script src="js/modules/characterHub.js"></script>
+<script src="js/modules/characterProfile.js"></script>
+<script src="js/modules/bestiary.js"></script>
+<script src="js/modules/codex.js"></script>
+
+<!-- Bootstrap, last -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

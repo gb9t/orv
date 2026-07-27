@@ -1,0 +1,62 @@
+{
+  "_comment": "Rank scale runs F (weakest) through S (strongest), matching rules.json stigmaRanks.",
+
+  "stigmas": [
+    {
+      "id": "stg_wounded_beast",
+      "name": "Wounded Beast",
+      "rank": "F",
+      "description": "Something feral bled into this character during a fight they barely survived.",
+      "passiveBonus": [{ "target": "skill", "key": "athletics", "type": "flat", "value": 1 }],
+      "activeAbility": {
+        "name": "Feral Surge",
+        "description": "A brief adrenaline spike that pushes the body past its limit.",
+        "cost": { "resource": "stamina", "amount": 10 },
+        "cooldown": "4 rounds"
+      },
+      "icon": "icon-stigma"
+    },
+    {
+      "id": "stg_hollow_choir",
+      "name": "Hollow Choir",
+      "rank": "E",
+      "description": "A faint, layered voice sometimes answers before this character finishes a thought.",
+      "passiveBonus": [{ "target": "skill", "key": "insight", "type": "flat", "value": 2 }],
+      "activeAbility": {
+        "name": "Whispered Warning",
+        "description": "Grants advance notice of the next hostile action aimed at the party.",
+        "cost": { "resource": "mana", "amount": 12 },
+        "cooldown": "5 rounds"
+      },
+      "icon": "icon-stigma"
+    },
+    {
+      "id": "stg_ledger_of_debts",
+      "name": "Ledger of Debts",
+      "rank": "D",
+      "description": "Every favor owed and owed-to seems to tally itself in the back of this character's mind.",
+      "passiveBonus": [{ "target": "skill", "key": "persuasion", "type": "flat", "value": 2 }],
+      "activeAbility": {
+        "name": "Called In",
+        "description": "Cash in an unspecified favor to turn one failed social roll into a success, once per scenario.",
+        "cost": { "resource": "mana", "amount": 15 },
+        "cooldown": "1 per scenario"
+      },
+      "icon": "icon-stigma"
+    },
+    {
+      "id": "stg_frostbound_oath",
+      "name": "Frostbound Oath",
+      "rank": "C",
+      "description": "A promise made in the cold that still chills the air whenever it is invoked.",
+      "passiveBonus": [{ "target": "resource", "key": "maxMana", "type": "percent", "value": 8 }],
+      "activeAbility": {
+        "name": "Binding Frost",
+        "description": "Locks a target in place, applying the Rooted status effect.",
+        "cost": { "resource": "mana", "amount": 18 },
+        "cooldown": "5 rounds"
+      },
+      "icon": "icon-stigma"
+    }
+  ]
+}

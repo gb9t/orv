@@ -1,0 +1,143 @@
+{
+  "_comment": "icon references a symbol id in assets/icons/sprite.svg. image is null until staff upload real art through the Staff Panel; the UI falls back to the icon automatically.",
+
+  "items": [
+    {
+      "id": "itm_rusted_shortsword",
+      "name": "Rusted Shortsword",
+      "description": "A basic blade, more habit than weapon at this point, but it still cuts.",
+      "category": "weapon", "rarity": "common", "icon": "icon-weapon", "image": null,
+      "weight": 3, "stackSize": 1, "sellValue": 12,
+      "effects": [{ "target": "special", "key": "weaponDamage", "type": "text", "value": "1d6 physical" }],
+      "requirements": null, "isStarterItem": true
+    },
+    {
+      "id": "itm_hunter_bow",
+      "name": "Hunter's Bow",
+      "description": "Simple, well-strung, and forgiving of a beginner's aim.",
+      "category": "weapon", "rarity": "common", "icon": "icon-weapon", "image": null,
+      "weight": 2, "stackSize": 1, "sellValue": 15,
+      "effects": [{ "target": "special", "key": "weaponDamage", "type": "text", "value": "1d8 physical, ranged" }],
+      "requirements": null, "isStarterItem": true
+    },
+    {
+      "id": "itm_star_stream_dagger",
+      "name": "Star Stream Dagger",
+      "description": "The blade seems to drink in ambient light rather than reflect it.",
+      "category": "weapon", "rarity": "rare", "icon": "icon-weapon", "image": null,
+      "weight": 1, "stackSize": 1, "sellValue": 220,
+      "effects": [
+        { "target": "special", "key": "weaponDamage", "type": "text", "value": "1d6 physical plus 1d4 unknown" },
+        { "target": "skill", "key": "stealth", "type": "flat", "value": 1 }
+      ],
+      "requirements": "Dexterity 12 or higher", "isStarterItem": false
+    },
+    {
+      "id": "itm_padded_coat",
+      "name": "Padded Coat",
+      "description": "Layered cloth and leather, light enough to move in.",
+      "category": "armour", "rarity": "common", "icon": "icon-armour", "image": null,
+      "weight": 4, "stackSize": 1, "sellValue": 10,
+      "effects": [{ "target": "resource", "key": "maxHp", "type": "percent", "value": 3 }],
+      "requirements": null, "isStarterItem": true
+    },
+    {
+      "id": "itm_reinforced_vest",
+      "name": "Reinforced Vest",
+      "description": "Scavenged plating stitched into a working vest.",
+      "category": "armour", "rarity": "uncommon", "icon": "icon-armour", "image": null,
+      "weight": 6, "stackSize": 1, "sellValue": 65,
+      "effects": [{ "target": "resource", "key": "maxHp", "type": "percent", "value": 6 }],
+      "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_wardens_plate",
+      "name": "Warden's Plate",
+      "description": "Ceremonial armor repurposed for the front line, heavier than it looks.",
+      "category": "armour", "rarity": "epic", "icon": "icon-armour", "image": null,
+      "weight": 12, "stackSize": 1, "sellValue": 480,
+      "effects": [
+        { "target": "resource", "key": "maxHp", "type": "percent", "value": 15 },
+        { "target": "stat", "key": "strength", "type": "flat", "value": -1 }
+      ],
+      "requirements": "Strength 14 or higher", "isStarterItem": false
+    },
+    {
+      "id": "itm_field_ration",
+      "name": "Field Ration",
+      "description": "Dense, flavorless, and exactly what an empty stomach needs.",
+      "category": "consumable", "rarity": "common", "icon": "icon-consumable", "image": null,
+      "weight": 0.5, "stackSize": 10, "sellValue": 2,
+      "effects": [{ "target": "resource", "key": "stamina", "type": "flat", "value": 10 }],
+      "requirements": null, "isStarterItem": true
+    },
+    {
+      "id": "itm_healing_draught",
+      "name": "Healing Draught",
+      "description": "A cloudy vial that closes shallow wounds within seconds.",
+      "category": "consumable", "rarity": "uncommon", "icon": "icon-consumable", "image": null,
+      "weight": 0.3, "stackSize": 5, "sellValue": 30,
+      "effects": [{ "target": "resource", "key": "hp", "type": "flat", "value": 25 }],
+      "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_clarity_tonic",
+      "name": "Clarity Tonic",
+      "description": "Clears static from the mind, useful when panic starts to set in.",
+      "category": "consumable", "rarity": "rare", "icon": "icon-consumable", "image": null,
+      "weight": 0.3, "stackSize": 3, "sellValue": 55,
+      "effects": [{ "target": "special", "key": "removeStatus", "type": "text", "value": "Removes one mental status effect" }],
+      "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_unstable_core_shard",
+      "name": "Unstable Core Shard",
+      "description": "Warm to the touch and faintly humming, useful to those who know what to do with it.",
+      "category": "material", "rarity": "rare", "icon": "icon-material", "image": null,
+      "weight": 1, "stackSize": 20, "sellValue": 40,
+      "effects": [], "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_hide_scrap",
+      "name": "Hide Scrap",
+      "description": "Tanned and cured, ready for a crafter's hands.",
+      "category": "material", "rarity": "common", "icon": "icon-material", "image": null,
+      "weight": 0.5, "stackSize": 30, "sellValue": 3,
+      "effects": [], "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_signal_ring",
+      "name": "Signal Ring",
+      "description": "A plain band that grows warm when someone from the same party is near.",
+      "category": "accessory", "rarity": "uncommon", "icon": "icon-accessory", "image": null,
+      "weight": 0.1, "stackSize": 1, "sellValue": 45,
+      "effects": [{ "target": "skill", "key": "survival", "type": "flat", "value": 1 }],
+      "requirements": null, "isStarterItem": true
+    },
+    {
+      "id": "itm_focus_pendant",
+      "name": "Focus Pendant",
+      "description": "A small weight worn close to the chest, said to steady the mind under pressure.",
+      "category": "accessory", "rarity": "epic", "icon": "icon-accessory", "image": null,
+      "weight": 0.1, "stackSize": 1, "sellValue": 310,
+      "effects": [{ "target": "resource", "key": "maxMana", "type": "percent", "value": 12 }],
+      "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_sealed_directive",
+      "name": "Sealed Directive",
+      "description": "An unopened order stamped with a faction seal. Something wants this delivered intact.",
+      "category": "quest", "rarity": "common", "icon": "icon-quest", "image": null,
+      "weight": 0.1, "stackSize": 1, "sellValue": 0,
+      "effects": [], "requirements": null, "isStarterItem": false
+    },
+    {
+      "id": "itm_fractured_key",
+      "name": "Fractured Key",
+      "description": "Half of something that clearly used to open a door of real consequence.",
+      "category": "quest", "rarity": "rare", "icon": "icon-quest", "image": null,
+      "weight": 0.1, "stackSize": 1, "sellValue": 0,
+      "effects": [], "requirements": null, "isStarterItem": false
+    }
+  ]
+}

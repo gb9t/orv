@@ -1,0 +1,311 @@
+/* ==========================================================================
+   PLAYER PANEL LAYOUTS
+   ========================================================================== */
+
+/* ---- View header, used at the top of every section ---- */
+.view-header {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+.view-header__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-cyan);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---- Character hub ---- */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card__portrait {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+}
+.char-card__portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+.char-card__name { font-family: var(--font-display); font-size: 1rem; color: var(--color-white); }
+.char-card__alias { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+
+.new-char-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 220px;
+  border: 1px dashed var(--color-border-strong);
+  color: var(--color-cyan);
+}
+
+/* ---- Creation wizard ---- */
+.wizard-steps {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.wizard-step {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  padding: 8px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.wizard-step.is-active { color: var(--color-cyan); border-color: var(--color-border-strong); background: var(--color-cyan-soft); }
+.wizard-step.is-done { color: var(--color-success); }
+
+.wizard-panel { min-height: 320px; }
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Trait picker */
+.trait-points-tracker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-cyan-soft);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-display);
+}
+.trait-points-tracker.is-negative { border-color: rgba(255, 77, 106, 0.55); background: var(--color-danger-soft); color: var(--color-danger); }
+
+.trait-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+@media (max-width: 700px) { .trait-columns { grid-template-columns: 1fr; } }
+
+.trait-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+.trait-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.trait-option:hover { border-color: var(--color-border-strong); }
+.trait-option.is-selected { border-color: var(--color-cyan); background: var(--color-cyan-soft); }
+.trait-option.is-negative.is-selected { border-color: var(--color-danger); background: var(--color-danger-soft); }
+.trait-option.is-disabled { opacity: 0.35; cursor: not-allowed; }
+.trait-option__name { font-weight: 700; color: var(--color-white); }
+.trait-option__desc { font-size: 0.78rem; color: var(--color-text-muted); }
+.trait-option__cost { font-family: var(--font-mono); font-size: 0.9rem; flex-shrink: 0; }
+
+/* Equipment picker grid */
+.equip-pick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-sm);
+}
+
+/* ---- Character profile ---- */
+.profile-header {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.profile-portrait {
+  width: 128px;
+  height: 128px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  box-shadow: var(--glow-cyan-sm);
+}
+.profile-portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-identity { flex: 1; min-width: 240px; }
+.profile-identity__name { font-size: 1.7rem; margin-bottom: 0; }
+.profile-identity__alias { color: var(--color-cyan); font-style: italic; margin-bottom: var(--space-sm); }
+.profile-identity__meta { display: flex; flex-wrap: wrap; gap: var(--space-sm); font-size: 0.82rem; color: var(--color-text-muted); }
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.resource-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-family: var(--font-mono); font-size: 0.85rem; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.stat-cell {
+  text-align: center;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+.stat-cell__label { font-size: 0.66rem; letter-spacing: 0.1em; color: var(--color-text-muted); text-transform: uppercase; font-family: var(--font-display); }
+.stat-cell__value { font-family: var(--font-mono); font-size: 1.6rem; color: var(--color-white); }
+.stat-cell__mod { font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-cyan); }
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.inline-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+  font-size: 0.8rem;
+  background: rgba(255, 207, 92, 0.08);
+}
+
+.progression-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+.progression-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+.progression-item__cost { font-family: var(--font-mono); color: var(--color-gold); }
+
+/* ---- Dice roller ---- */
+.dice-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+@media (max-width: 860px) { .dice-layout { grid-template-columns: 1fr; } }
+
+.die-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+.die-button {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.die-button:hover { border-color: var(--color-border-strong); }
+.die-button.is-selected { border-color: var(--color-cyan); color: var(--color-cyan); background: var(--color-cyan-soft); box-shadow: var(--glow-cyan-sm); }
+
+.roll-result-display {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+}
+.roll-result-display__value {
+  font-family: var(--font-mono);
+  font-size: 4.2rem;
+  color: var(--color-cyan);
+  text-shadow: var(--glow-cyan-md);
+  line-height: 1;
+}
+.roll-result-display__value.is-rolling { animation: dicePulse 0.12s linear infinite; }
+.roll-result-display__value.is-crit-success { color: var(--color-success); text-shadow: var(--glow-success); }
+.roll-result-display__value.is-crit-fail { color: var(--color-danger); text-shadow: var(--glow-danger); }
+.roll-result-display__breakdown { font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-text-muted); margin-top: var(--space-sm); }
+
+.roll-history { max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+.roll-history-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-size: 0.82rem;
+}
+.roll-history-entry.is-hidden-roll { border-style: dashed; opacity: 0.7; }
+.roll-history-entry__total { font-family: var(--font-mono); font-weight: 700; }
+
+/* ---- Search / filter bar (bestiary, codex) ---- */
+.browser-toolbar {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+  align-items: center;
+}
+.browser-toolbar input[type="search"] {
+  flex: 1;
+  min-width: 200px;
+  background: rgba(4, 8, 14, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--color-white);
+}
+.filter-chip-row { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.threat-meter { display: flex; gap: 3px; }
+.threat-meter span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+.threat-meter span.is-lit { background: var(--color-danger); }
+
+/* ---- Quest log ---- */
+.quest-card__objectives { margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 4px; }
+.quest-objective { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
+.quest-objective.is-complete { color: var(--color-success); text-decoration: line-through; }
+.quest-reward-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-sm); }

@@ -1,0 +1,83 @@
+{
+  "_comment": "These are the unlockable 'Skills' shown on a character's profile and purchased through Progression. They are distinct from the 20 stat and skill CHECK rolls used for dice rolling, which live in rules.json.",
+
+  "skills": [
+    {
+      "id": "skl_second_wind",
+      "name": "Second Wind",
+      "type": "active",
+      "description": "A short burst of focus that steadies the body enough to keep fighting.",
+      "cost": { "resource": "stamina", "amount": 10 },
+      "cooldown": "3 rounds",
+      "effects": [{ "target": "resource", "key": "hp", "type": "flat", "value": 15 }],
+      "unlockCost": 100, "requiredLevel": 1, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_focused_strike",
+      "name": "Focused Strike",
+      "type": "active",
+      "description": "A single attack thrown with full concentration behind it.",
+      "cost": { "resource": "stamina", "amount": 8 },
+      "cooldown": "2 rounds",
+      "effects": [{ "target": "special", "key": "nextAttackBonus", "type": "flat", "value": 4 }],
+      "unlockCost": 100, "requiredLevel": 1, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_read_the_room",
+      "name": "Read the Room",
+      "type": "passive",
+      "description": "A standing edge when sizing up strangers and their intentions.",
+      "cost": null, "cooldown": null,
+      "effects": [{ "target": "skill", "key": "insight", "type": "flat", "value": 2 }],
+      "unlockCost": 120, "requiredLevel": 2, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_arcane_channel",
+      "name": "Arcane Channel",
+      "type": "active",
+      "description": "Draws directly on stored mana to force an effect through.",
+      "cost": { "resource": "mana", "amount": 15 },
+      "cooldown": "4 rounds",
+      "effects": [{ "target": "skill", "key": "arcana", "type": "flat", "value": 5 }],
+      "unlockCost": 150, "requiredLevel": 3, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_iron_stomach",
+      "name": "Iron Stomach",
+      "type": "passive",
+      "description": "Years of rough travel built up a resistance most people never need.",
+      "cost": null, "cooldown": null,
+      "effects": [{ "target": "stat", "key": "constitution", "type": "flat", "value": 1 }],
+      "unlockCost": 130, "requiredLevel": 2, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_shadow_step",
+      "name": "Shadow Step",
+      "type": "active",
+      "description": "A brief, near-silent burst of movement through cover.",
+      "cost": { "resource": "stamina", "amount": 12 },
+      "cooldown": "3 rounds",
+      "effects": [{ "target": "skill", "key": "stealth", "type": "flat", "value": 6 }],
+      "unlockCost": 140, "requiredLevel": 2, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_battlefield_command",
+      "name": "Battlefield Command",
+      "type": "active",
+      "description": "A shouted correction that pulls an ally back on script.",
+      "cost": { "resource": "mana", "amount": 10 },
+      "cooldown": "3 rounds",
+      "effects": [{ "target": "special", "key": "allySkillBonus", "type": "flat", "value": 2 }],
+      "unlockCost": 160, "requiredLevel": 4, "icon": "icon-skill"
+    },
+    {
+      "id": "skl_steel_nerves",
+      "name": "Steel Nerves",
+      "type": "passive",
+      "description": "The kind of composure that only comes from having already survived worse.",
+      "cost": null, "cooldown": null,
+      "effects": [{ "target": "skill", "key": "intimidation", "type": "flat", "value": 2 }],
+      "unlockCost": 130, "requiredLevel": 3, "icon": "icon-skill"
+    }
+  ]
+}

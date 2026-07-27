@@ -1,0 +1,307 @@
+{
+  "_comment": "durationType is one of: rounds, minutes, hours, days, scenario, until-cured, until-used, until-depleted. rollModifiers use the same {target,key,type,value} shape as traits. preventsActions and specialEffect are read by the UI as descriptive text; they are not auto-enforced by the dice roller in this build, the DM applies them by ruling.",
+
+  "effects": [
+    {
+      "id": "bleeding", "name": "Bleeding", "category": "physical",
+      "description": "Open wounds cause steady blood loss each round.",
+      "durationType": "rounds", "defaultDuration": 3,
+      "damageOverTime": { "amount": "1d4", "type": "physical" },
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 3,
+      "removalMethods": ["Medicine check DC 12", "Bandage item", "Healing magic"]
+    },
+    {
+      "id": "poisoned", "name": "Poisoned", "category": "physical",
+      "description": "Toxin in the blood saps strength and coordination.",
+      "durationType": "rounds", "defaultDuration": 5,
+      "damageOverTime": { "amount": "1d4", "type": "poison" },
+      "rollModifiers": [
+        { "target": "stat", "key": "strength", "type": "flat", "value": -2 },
+        { "target": "stat", "key": "dexterity", "type": "flat", "value": -2 }
+      ],
+      "preventsActions": [], "stackLimit": 2,
+      "removalMethods": ["Antidote item", "Medicine check DC 14", "Poison resistance"]
+    },
+    {
+      "id": "burning", "name": "Burning", "category": "physical",
+      "description": "Flames cling to skin and cloth, doing damage until put out.",
+      "durationType": "rounds", "defaultDuration": 3,
+      "damageOverTime": { "amount": "1d6", "type": "fire" },
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Submerge in water", "Fire resistance", "Extinguishing item"]
+    },
+    {
+      "id": "frozen", "name": "Frozen", "category": "physical",
+      "description": "Ice locks up joints and muscle, slowing every motion.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "movementModifier": -50,
+      "rollModifiers": [{ "target": "stat", "key": "dexterity", "type": "flat", "value": -4 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Fire damage", "Warmth source", "Time"]
+    },
+    {
+      "id": "chilled", "name": "Chilled", "category": "physical",
+      "description": "A lesser cold that stiffens movement without locking it up.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "rollModifiers": [{ "target": "stat", "key": "dexterity", "type": "flat", "value": -2 }],
+      "preventsActions": [], "stackLimit": 2,
+      "removalMethods": ["Warmth source", "Time"]
+    },
+    {
+      "id": "paralysed", "name": "Paralysed", "category": "physical",
+      "description": "The body will not answer to any command at all.",
+      "durationType": "rounds", "defaultDuration": 1,
+      "rollModifiers": [], "preventsActions": ["movement", "actions", "reactions"], "stackLimit": 1,
+      "removalMethods": ["Constitution save DC 14 each round", "Cure effect or item"]
+    },
+    {
+      "id": "exhausted", "name": "Exhausted", "category": "physical",
+      "description": "Deep fatigue that dulls every reflex and judgment call.",
+      "durationType": "scenario", "defaultDuration": null,
+      "rollModifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": -2 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Full rest", "Stamina restorative item"]
+    },
+    {
+      "id": "fatigued", "name": "Fatigued", "category": "physical",
+      "description": "The lighter cousin of exhaustion, still enough to blunt performance.",
+      "durationType": "hours", "defaultDuration": 4,
+      "rollModifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": -1 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Rest", "Time"]
+    },
+    {
+      "id": "frightened", "name": "Frightened", "category": "mental",
+      "description": "Fear of a specific source overrides the impulse to approach it.",
+      "durationType": "minutes", "defaultDuration": 10,
+      "rollModifiers": [{ "target": "stat", "key": "wisdom", "type": "flat", "value": -2 }],
+      "preventsActions": ["approaching the source of fear"], "stackLimit": 1,
+      "removalMethods": ["Wisdom save DC 12", "Remove the source", "Ally intervention"]
+    },
+    {
+      "id": "panicked", "name": "Panicked", "category": "mental",
+      "description": "Fear tips over into loss of control over one's own actions.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "rollModifiers": [], "preventsActions": ["choosing actions freely"], "stackLimit": 1,
+      "removalMethods": ["Wisdom save DC 15", "Ally intervention"]
+    },
+    {
+      "id": "dazed", "name": "Dazed", "category": "mental",
+      "description": "A rattled moment of static between the ears.",
+      "durationType": "rounds", "defaultDuration": 1,
+      "rollModifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": -2 }],
+      "preventsActions": ["reactions"], "stackLimit": 1,
+      "removalMethods": ["Ends automatically after duration"]
+    },
+    {
+      "id": "stunned", "name": "Stunned", "category": "physical",
+      "description": "A hard enough hit to stall the body outright, briefly.",
+      "durationType": "rounds", "defaultDuration": 1,
+      "rollModifiers": [], "preventsActions": ["actions", "reactions"], "stackLimit": 1,
+      "removalMethods": ["Constitution save DC 13"]
+    },
+    {
+      "id": "blind", "name": "Blind", "category": "physical",
+      "description": "Sight is gone, temporarily or otherwise.",
+      "durationType": "minutes", "defaultDuration": 10,
+      "rollModifiers": [{ "target": "skill", "key": "perception", "type": "flat", "value": -5 }],
+      "preventsActions": ["sight-based actions"], "stackLimit": 1,
+      "removalMethods": ["Restore sight item or effect", "Time"]
+    },
+    {
+      "id": "deafened", "name": "Deafened", "category": "physical",
+      "description": "Hearing is gone, cutting off verbal cues and warnings alike.",
+      "durationType": "minutes", "defaultDuration": 10,
+      "rollModifiers": [{ "target": "skill", "key": "perception", "type": "flat", "value": -5 }],
+      "preventsActions": ["hearing-based actions"], "stackLimit": 1,
+      "removalMethods": ["Time", "Healing effect"]
+    },
+    {
+      "id": "silenced", "name": "Silenced", "category": "magical",
+      "description": "No sound will carry from this character, verbal abilities included.",
+      "durationType": "minutes", "defaultDuration": 5,
+      "rollModifiers": [], "preventsActions": ["verbal abilities or spells"], "stackLimit": 1,
+      "removalMethods": ["Time", "Dispel effect"]
+    },
+    {
+      "id": "restrained", "name": "Restrained", "category": "physical",
+      "description": "Bound tightly enough that movement and evasion both suffer.",
+      "durationType": "rounds", "defaultDuration": 3,
+      "movementModifier": -100,
+      "rollModifiers": [{ "target": "stat", "key": "dexterity", "type": "flat", "value": -4 }],
+      "preventsActions": ["movement"], "stackLimit": 1,
+      "removalMethods": ["Strength or Acrobatics check DC 13 to break free"]
+    },
+    {
+      "id": "rooted", "name": "Rooted", "category": "magical",
+      "description": "Feet are fixed in place, a lighter version of being restrained.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "movementModifier": -100,
+      "rollModifiers": [], "preventsActions": ["movement"], "stackLimit": 1,
+      "removalMethods": ["Strength check DC 11", "Duration ends"]
+    },
+    {
+      "id": "knocked_down", "name": "Knocked Down", "category": "physical",
+      "description": "Flat on the ground until an action is spent standing back up.",
+      "durationType": "rounds", "defaultDuration": 1,
+      "rollModifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": -2 }],
+      "preventsActions": ["movement until standing"], "stackLimit": 1,
+      "removalMethods": ["Spend an action to stand"]
+    },
+    {
+      "id": "crippled", "name": "Crippled", "category": "physical",
+      "description": "A lasting injury that will not shake off with a short rest.",
+      "durationType": "until-cured", "defaultDuration": null,
+      "movementModifier": -50,
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Medicine check DC 16", "Healing magic", "Days of rest"]
+    },
+    {
+      "id": "weakened", "name": "Weakened", "category": "physical",
+      "description": "Raw power is sapped, noticeably, for a while.",
+      "durationType": "hours", "defaultDuration": 3,
+      "rollModifiers": [{ "target": "stat", "key": "strength", "type": "flat", "value": -3 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Rest", "Restorative item"]
+    },
+    {
+      "id": "vulnerable", "name": "Vulnerable", "category": "magical",
+      "description": "Defenses are cracked open, and every hit lands harder.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "specialEffect": "Incoming damage increased by 25 percent",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Time", "Cleanse effect"]
+    },
+    {
+      "id": "cursed", "name": "Cursed", "category": "magical",
+      "description": "A malicious effect that clings past a normal rest.",
+      "durationType": "until-cured", "defaultDuration": null,
+      "specialEffect": "Cannot be removed by resting alone",
+      "rollModifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": -2 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Remove Curse effect or item", "Quest-specific cure"]
+    },
+    {
+      "id": "blessed", "name": "Blessed", "category": "magical",
+      "description": "A favorable effect that sharpens everything the character attempts.",
+      "durationType": "scenario", "defaultDuration": null,
+      "rollModifiers": [{ "target": "allSkills", "key": "all", "type": "flat", "value": 2 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Expires naturally at end of scenario"]
+    },
+    {
+      "id": "inspired", "name": "Inspired", "category": "mental",
+      "description": "A surge of confidence ready to be spent on the next attempt.",
+      "durationType": "until-used", "defaultDuration": null,
+      "specialEffect": "Add 2 to the next roll made, then this effect is consumed",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Consumed on next roll"]
+    },
+    {
+      "id": "regenerating", "name": "Regenerating", "category": "physical",
+      "description": "Wounds knit themselves closed round after round.",
+      "durationType": "rounds", "defaultDuration": 3,
+      "specialEffect": "Heals 1d6 HP at the start of each round",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Expires naturally"]
+    },
+    {
+      "id": "shielded", "name": "Shielded", "category": "magical",
+      "description": "A barrier absorbs damage before it reaches the character.",
+      "durationType": "until-depleted", "defaultDuration": null,
+      "specialEffect": "Absorbs the next 10 damage taken",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Depleted by damage", "Expires naturally"]
+    },
+    {
+      "id": "invisible", "name": "Invisible", "category": "magical",
+      "description": "Fully unseen, so long as the character does nothing to break it.",
+      "durationType": "minutes", "defaultDuration": 5,
+      "specialEffect": "Cannot be targeted by sight-based attacks, advantage on Stealth",
+      "rollModifiers": [{ "target": "skill", "key": "stealth", "type": "flat", "value": 5 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Attacking or casting breaks it", "Expires naturally"]
+    },
+    {
+      "id": "camouflaged", "name": "Camouflaged", "category": "physical",
+      "description": "Blended into the surroundings well enough to fool a casual glance.",
+      "durationType": "until-used", "defaultDuration": null,
+      "rollModifiers": [{ "target": "skill", "key": "stealth", "type": "flat", "value": 3 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Moving or attacking breaks it"]
+    },
+    {
+      "id": "marked", "name": "Marked", "category": "magical",
+      "description": "A tactical brand that draws every attacker's eye.",
+      "durationType": "rounds", "defaultDuration": 3,
+      "specialEffect": "Attackers gain a bonus to hit this target",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Expires naturally", "Cleanse effect"]
+    },
+    {
+      "id": "corroded", "name": "Corroded", "category": "physical",
+      "description": "Acid or rust has eaten into equipped gear.",
+      "durationType": "until-cured", "defaultDuration": null,
+      "specialEffect": "Equipped gear loses 10 percent effectiveness",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Repair item", "Blacksmith or crafting service"]
+    },
+    {
+      "id": "diseased", "name": "Diseased", "category": "physical",
+      "description": "An infection that worsens the longer it goes untreated.",
+      "durationType": "days", "defaultDuration": 3,
+      "rollModifiers": [{ "target": "stat", "key": "constitution", "type": "flat", "value": -2 }],
+      "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Medicine check DC 15", "Cure Disease effect"]
+    },
+    {
+      "id": "hallucinating", "name": "Hallucinating", "category": "mental",
+      "description": "The senses report things that are not really there.",
+      "durationType": "minutes", "defaultDuration": 10,
+      "specialEffect": "May perceive false targets or effects, at DM discretion",
+      "rollModifiers": [], "preventsActions": [], "stackLimit": 1,
+      "removalMethods": ["Time", "Cure effect"]
+    },
+    {
+      "id": "confused", "name": "Confused", "category": "mental",
+      "description": "Actions no longer land where they were intended.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "rollModifiers": [], "preventsActions": ["choosing one's own action, DM or random table decides"], "stackLimit": 1,
+      "removalMethods": ["Wisdom save DC 14"]
+    },
+    {
+      "id": "sleeping", "name": "Sleeping", "category": "mental",
+      "description": "Fully unconscious until something wakes them.",
+      "durationType": "until-cured", "defaultDuration": null,
+      "rollModifiers": [], "preventsActions": ["all actions"], "stackLimit": 1,
+      "removalMethods": ["Taking damage", "Loud disturbance", "Time"]
+    },
+    {
+      "id": "petrified", "name": "Petrified", "category": "magical",
+      "description": "Turned to stone, immobile but nearly untouchable while it lasts.",
+      "durationType": "until-cured", "defaultDuration": null,
+      "specialEffect": "Resistant to all damage while petrified",
+      "rollModifiers": [], "preventsActions": ["all actions"], "stackLimit": 1,
+      "removalMethods": ["Restoration effect", "Quest-specific cure"]
+    },
+    {
+      "id": "berserk", "name": "Berserk", "category": "mental",
+      "description": "All caution is gone, replaced by the need to hit something.",
+      "durationType": "rounds", "defaultDuration": 3,
+      "rollModifiers": [
+        { "target": "skill", "key": "athletics", "type": "flat", "value": 3 },
+        { "target": "skill", "key": "insight", "type": "flat", "value": -3 },
+        { "target": "skill", "key": "deception", "type": "flat", "value": -3 }
+      ],
+      "preventsActions": ["anything but attacking the nearest target"], "stackLimit": 1,
+      "removalMethods": ["Expires naturally", "Wisdom save DC 16"]
+    },
+    {
+      "id": "taunted", "name": "Taunted", "category": "mental",
+      "description": "Attention is locked onto whoever provoked it.",
+      "durationType": "rounds", "defaultDuration": 2,
+      "rollModifiers": [], "preventsActions": ["attacking anyone but the taunting source"], "stackLimit": 1,
+      "removalMethods": ["Expires naturally", "Wisdom save DC 12"]
+    }
+  ]
+}

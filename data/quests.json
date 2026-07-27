@@ -1,0 +1,58 @@
+{
+  "_comment": "A character's own progress (active, completed, failed, objective checkmarks) is stored on the character record, not here. This file is the quest catalog staff build from.",
+
+  "quests": [
+    {
+      "id": "qst_ash_and_embers",
+      "name": "Ash and Embers",
+      "description": "A supply cart went missing on the road through Ashfall District. Find out what happened to it.",
+      "recommendedDifficulty": "Low",
+      "recommendedLevel": 1,
+      "objectives": [
+        { "id": "obj1", "text": "Reach the last known position of the supply cart" },
+        { "id": "obj2", "text": "Deal with whatever is guarding it" },
+        { "id": "obj3", "text": "Recover at least half of the original cargo" }
+      ],
+      "rewards": { "coins": 80, "xp": 150, "items": ["itm_field_ration", "itm_field_ration"], "titles": [], "fables": [], "stigmas": [] }
+    },
+    {
+      "id": "qst_the_glass_between",
+      "name": "The Glass Between",
+      "description": "Residents near The Hollow Gallery report movement in windows that should be empty. Investigate before someone gets hurt.",
+      "recommendedDifficulty": "Moderate",
+      "recommendedLevel": 3,
+      "objectives": [
+        { "id": "obj1", "text": "Interview at least one witness" },
+        { "id": "obj2", "text": "Enter The Hollow Gallery after dark" },
+        { "id": "obj3", "text": "Confront the source of the sightings" }
+      ],
+      "rewards": { "coins": 150, "xp": 300, "items": ["itm_clarity_tonic"], "titles": ["Glasswalker"], "fables": [], "stigmas": [] }
+    },
+    {
+      "id": "qst_choir_at_the_gate",
+      "name": "Choir at the Gate",
+      "description": "A fixed site guarded by an Iron Choir Sentinel is blocking access to a location the party needs to reach.",
+      "recommendedDifficulty": "High",
+      "recommendedLevel": 6,
+      "objectives": [
+        { "id": "obj1", "text": "Locate the Sentinel's trigger condition" },
+        { "id": "obj2", "text": "Disable or destroy the Sentinel" },
+        { "id": "obj3", "text": "Pass through the gate before it reactivates" }
+      ],
+      "rewards": { "coins": 400, "xp": 700, "items": ["itm_unstable_core_shard"], "titles": [], "fables": [], "stigmas": ["stg_frostbound_oath"] }
+    },
+    {
+      "id": "qst_what_the_uncounted_left",
+      "name": "What the Uncounted Left",
+      "description": "A scenario failed without resolution years ago. Something is still out there, and it has stopped staying in one place.",
+      "recommendedDifficulty": "Severe",
+      "recommendedLevel": 9,
+      "objectives": [
+        { "id": "obj1", "text": "Track the anomaly across at least two sightings" },
+        { "id": "obj2", "text": "Force a confrontation on the party's terms" },
+        { "id": "obj3", "text": "Survive the encounter" }
+      ],
+      "rewards": { "coins": 900, "xp": 1500, "items": ["itm_fractured_key"], "titles": ["Uncounted Witness"], "fables": ["fbl_quiet_between_storms"], "stigmas": [] }
+    }
+  ]
+}

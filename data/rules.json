@@ -1,0 +1,108 @@
+{
+  "_comment": "Central tuning file. Change numbers here to rebalance the whole system without touching code.",
+
+  "stats": ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
+
+  "statLabels": {
+    "strength": "Strength",
+    "dexterity": "Dexterity",
+    "constitution": "Constitution",
+    "intelligence": "Intelligence",
+    "wisdom": "Wisdom",
+    "charisma": "Charisma"
+  },
+
+  "baseStatValue": 10,
+
+  "skills": {
+    "athletics": "strength",
+    "acrobatics": "dexterity",
+    "stealth": "dexterity",
+    "arcana": "intelligence",
+    "investigation": "intelligence",
+    "nature": "intelligence",
+    "history": "intelligence",
+    "perception": "wisdom",
+    "insight": "wisdom",
+    "survival": "wisdom",
+    "medicine": "wisdom",
+    "persuasion": "charisma",
+    "deception": "charisma",
+    "intimidation": "charisma"
+  },
+
+  "skillLabels": {
+    "athletics": "Athletics",
+    "acrobatics": "Acrobatics",
+    "stealth": "Stealth",
+    "arcana": "Arcana",
+    "investigation": "Investigation",
+    "nature": "Nature",
+    "history": "History",
+    "perception": "Perception",
+    "insight": "Insight",
+    "survival": "Survival",
+    "medicine": "Medicine",
+    "persuasion": "Persuasion",
+    "deception": "Deception",
+    "intimidation": "Intimidation"
+  },
+
+  "resourceFormulas": {
+    "maxHp": { "base": 50, "perLevel": 5, "constitutionMultiplier": 10 },
+    "maxStamina": { "base": 30, "perLevel": 2, "constitutionMultiplier": 5, "strengthMultiplier": 5 },
+    "maxMana": { "base": 30, "perLevel": 2, "intelligenceMultiplier": 5, "wisdomMultiplier": 5 }
+  },
+
+  "traitPointBaseAllowance": 2,
+  "maxNegativeTraits": 4,
+  "startingCoins": 100,
+
+  "leveling": {
+    "experiencePerLevel": 1000,
+    "maxLevel": 20
+  },
+
+  "progressionCosts": {
+    "statIncrease": { "baseCost": 50, "scalingPerPoint": 15, "amountPerPurchase": 1 },
+    "maxHpIncrease": { "amountPerPurchase": 5, "baseCost": 40, "scalingPerPurchase": 8 },
+    "maxStaminaIncrease": { "amountPerPurchase": 5, "baseCost": 35, "scalingPerPurchase": 7 },
+    "maxManaIncrease": { "amountPerPurchase": 5, "baseCost": 35, "scalingPerPurchase": 7 },
+    "unlockSkill": { "baseCost": 100 }
+  },
+
+  "diceTypes": [2, 4, 6, 8, 10, 12, 20, 100],
+
+  "itemCategories": ["weapon", "armour", "consumable", "material", "accessory", "quest", "equipment"],
+
+  "rarities": ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
+
+  "stigmaRanks": ["F", "E", "D", "C", "B", "A", "S"],
+
+  "fableGrades": ["Historical", "Legendary", "Quasi-Mythical", "Mythical", "Giant"],
+
+  "codexCategories": [
+    "locations",
+    "organisations",
+    "constellations",
+    "incarnations",
+    "historicalEvents",
+    "worldLore",
+    "rules"
+  ],
+
+  "codexCategoryLabels": {
+    "locations": "Locations",
+    "organisations": "Organisations",
+    "constellations": "Constellations",
+    "incarnations": "Incarnations",
+    "historicalEvents": "Historical Events",
+    "worldLore": "World Lore",
+    "rules": "Rules",
+    "skills": "Skills",
+    "stigmas": "Stigmas",
+    "fables": "Fables",
+    "equipment": "Equipment",
+    "statusEffects": "Status Effects"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "_comment": "This file only holds the lore-only Codex categories. The Skills, Stigmas, Fables, Equipment, and Status Effects Codex tabs are generated in the browser by reading skills.json, stigmas.json, fables.json, items.json, and statusEffects.json directly, so that data is never duplicated. relatedIds cross-links to other systems, e.g. {\"type\":\"bestiary\",\"id\":\"bst_ashback_hound\"}.",
+
+  "entries": [
+    {
+      "id": "cdx_ashfall_district",
+      "category": "locations",
+      "name": "Ashfall District",
+      "body": "What used to be a dense residential block is now a maze of collapsed streets and burned frames. Ash still drifts down on quiet days, long after the fires that caused it went out. Several early scenarios were staged here, and the district has a reputation for hostile wildlife that adapted quickly to the changed terrain.",
+      "tags": ["urban", "ruins", "low-tier"],
+      "relatedIds": [
+        { "type": "bestiary", "id": "bst_ashback_hound" },
+        { "type": "bestiary", "id": "bst_cinder_alpha" }
+      ],
+      "image": null
+    },
+    {
+      "id": "cdx_the_hollow_gallery",
+      "category": "locations",
+      "name": "The Hollow Gallery",
+      "body": "A shopping center left almost entirely intact except for its people. Every reflective surface in the building, glass storefronts included, has been reported to occasionally show movement that is not a reflection.",
+      "tags": ["urban", "interior", "unsettling"],
+      "relatedIds": [{ "type": "bestiary", "id": "bst_glass_wraith" }],
+      "image": null
+    },
+    {
+      "id": "cdx_the_requiem_choir",
+      "category": "organisations",
+      "name": "The Requiem Choir",
+      "body": "A loose coalition of survivors who found each other during the earliest scenarios and never fully disbanded. The Choir does not command anyone, but it keeps a shared archive of scenario reports, and most veteran players end up passing through its network eventually.",
+      "tags": ["faction", "neutral", "information network"],
+      "relatedIds": [],
+      "image": null
+    },
+    {
+      "id": "cdx_iron_choir_order",
+      "category": "organisations",
+      "name": "Iron Choir Order",
+      "body": "Whoever built the Iron Choir Sentinels either founded this order or predates it entirely, depending which account is believed. What is consistent across accounts is that the Order guards specific fixed sites and does not negotiate about it.",
+      "tags": ["faction", "hostile", "guardians"],
+      "relatedIds": [{ "type": "bestiary", "id": "bst_iron_choir_sentinel" }],
+      "image": null
+    },
+    {
+      "id": "cdx_the_uncounted_star",
+      "category": "constellations",
+      "name": "The Uncounted Star",
+      "body": "A constellation that is never described the same way twice by anyone who claims to see it, in a story where every other constellation is at least broadly consistent. Several scholars in-world argue it should not be classified as a constellation at all.",
+      "tags": ["sky", "anomaly"],
+      "relatedIds": [{ "type": "bestiary", "id": "bst_the_uncounted" }],
+      "image": null
+    },
+    {
+      "id": "cdx_the_patient_ledger",
+      "category": "constellations",
+      "name": "The Patient Ledger",
+      "body": "Said to take an interest in characters who keep careful records of debts, favors, and promises. Rarely intervenes directly, but rewards those it has been watching for a long time.",
+      "tags": ["sky", "watcher"],
+      "relatedIds": [{ "type": "fables", "id": "fbl_the_first_ledger" }],
+      "image": null
+    },
+    {
+      "id": "cdx_incarnation_the_unbroken_line",
+      "category": "incarnations",
+      "name": "The Unbroken Line",
+      "body": "A recurring role rather than a fixed person: whoever holds a line that should have collapsed and does not, at real personal cost, is said to briefly carry this incarnation. Most who carry it never learn the name for what they did.",
+      "tags": ["role", "rare"],
+      "relatedIds": [{ "type": "fables", "id": "fbl_unbroken_line" }],
+      "image": null
+    },
+    {
+      "id": "cdx_first_collapse",
+      "category": "historicalEvents",
+      "name": "The First Collapse",
+      "body": "The earliest recorded scenario failure, where a story ended without a clean resolution and left a physical scar on the world instead. Most sites where a scenario failed without resolution are still marked by lingering, unstable effects.",
+      "tags": ["origin", "world-scarring"],
+      "relatedIds": [],
+      "image": null
+    },
+    {
+      "id": "cdx_the_long_quiet",
+      "category": "historicalEvents",
+      "name": "The Long Quiet",
+      "body": "A stretch of time between major scenarios so unusually calm that survivors still argue about whether it was rest or preparation for something worse.",
+      "tags": ["interlude"],
+      "relatedIds": [],
+      "image": null
+    },
+    {
+      "id": "cdx_scenario_mechanics_overview",
+      "category": "worldLore",
+      "name": "How Scenarios Work",
+      "body": "A scenario is a bounded stretch of story with its own objectives, difficulty, and reward structure, distinct from open free-roleplay. Characters can be pulled into a scenario individually or as a party, and outcomes are tracked in each character's Scenario History.",
+      "tags": ["mechanics", "orientation"],
+      "relatedIds": [],
+      "image": null
+    },
+    {
+      "id": "cdx_the_star_stream",
+      "category": "worldLore",
+      "name": "The Star Stream",
+      "body": "The ambient current that seems to carry attention, favor, and consequence between characters and whatever is watching them. Nobody in-world claims to fully understand it, and that uncertainty is treated as part of its nature rather than a gap to be closed.",
+      "tags": ["cosmology"],
+      "relatedIds": [],
+      "image": null
+    },
+    {
+      "id": "cdx_house_rule_hidden_rolls",
+      "category": "rules",
+      "name": "House Rule: Hidden Rolls",
+      "body": "Dungeon Masters may call for a hidden roll when a character should not know the outcome of a check in advance, such as detecting a trap or reading a lie. Hidden rolls are logged separately from public rolls and are visible only to the roller and staff.",
+      "tags": ["house rule", "dice"],
+      "relatedIds": [],
+      "image": null
+    },
+    {
+      "id": "cdx_house_rule_trait_respec",
+      "category": "rules",
+      "name": "House Rule: Trait Respec",
+      "body": "A character may only change their selected Traits with Dungeon Master approval, typically tied to a significant in-story turning point rather than a routine request.",
+      "tags": ["house rule", "character creation"],
+      "relatedIds": [],
+      "image": null
+    }
+  ]
+}

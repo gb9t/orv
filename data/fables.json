@@ -1,0 +1,68 @@
+{
+  "_comment": "grade must be one of rules.json fableGrades, in ascending order of rarity: Historical, Legendary, Quasi-Mythical, Mythical, Giant.",
+
+  "fables": [
+    {
+      "id": "fbl_the_first_ledger",
+      "name": "The First Ledger",
+      "grade": "Historical",
+      "description": "Recognition for having kept a record no one else thought to keep.",
+      "story": "Long before anyone else thought to write it down, this character kept count of names, debts, and warnings that later mattered a great deal.",
+      "passiveEffects": [{ "target": "skill", "key": "history", "type": "flat", "value": 2 }],
+      "requirements": "Complete a scenario by relying on notes taken during a previous one.",
+      "dateObtainedNote": "Set automatically when a Dungeon Master awards this Fable.",
+      "icon": "icon-fable"
+    },
+    {
+      "id": "fbl_unbroken_line",
+      "name": "Unbroken Line",
+      "grade": "Legendary",
+      "description": "Held a line that should not have held.",
+      "story": "Everyone else fell back. This character did not, and the line did not break because of it.",
+      "passiveEffects": [{ "target": "resource", "key": "maxHp", "type": "percent", "value": 8 }],
+      "requirements": "Survive a scenario at 1 HP or below without retreating.",
+      "dateObtainedNote": "Set automatically when a Dungeon Master awards this Fable.",
+      "icon": "icon-fable"
+    },
+    {
+      "id": "fbl_quiet_between_storms",
+      "name": "Quiet Between Storms",
+      "grade": "Quasi-Mythical",
+      "description": "Found calm in a moment that should have broken anyone else.",
+      "story": "In the eye of a scenario spinning out of every plan the party had, this character stopped, thought clearly, and turned it around.",
+      "passiveEffects": [{ "target": "allSkills", "key": "all", "type": "flat", "value": 1 }],
+      "requirements": "Resolve a scenario's critical turning point through a skill check rather than combat.",
+      "dateObtainedNote": "Set automatically when a Dungeon Master awards this Fable.",
+      "icon": "icon-fable"
+    },
+    {
+      "id": "fbl_name_the_stream_remembers",
+      "name": "A Name the Stream Remembers",
+      "grade": "Mythical",
+      "description": "Marked as significant by something far larger than any single scenario.",
+      "story": "Whatever is watching from beyond the story took an interest, and it does not forget the names it watches.",
+      "passiveEffects": [
+        { "target": "resource", "key": "maxMana", "type": "percent", "value": 10 },
+        { "target": "special", "key": "experienceMultiplier", "type": "percent", "value": 5 }
+      ],
+      "requirements": "Complete a major arc as one of its central figures, DM discretion.",
+      "dateObtainedNote": "Set automatically when a Dungeon Master awards this Fable.",
+      "icon": "icon-fable"
+    },
+    {
+      "id": "fbl_the_giant_who_did_not_kneel",
+      "name": "The Giant Who Did Not Kneel",
+      "grade": "Giant",
+      "description": "Refused an ending that every sign said was inevitable.",
+      "story": "Where the story wrote a defeat, this character wrote something else instead, and the story had to accept it.",
+      "passiveEffects": [
+        { "target": "resource", "key": "maxHp", "type": "percent", "value": 15 },
+        { "target": "resource", "key": "maxStamina", "type": "percent", "value": 15 },
+        { "target": "resource", "key": "maxMana", "type": "percent", "value": 15 }
+      ],
+      "requirements": "Overturn a scenario's scripted defeat condition entirely, DM discretion, campaign-defining.",
+      "dateObtainedNote": "Set automatically when a Dungeon Master awards this Fable.",
+      "icon": "icon-fable"
+    }
+  ]
+}

@@ -60,45 +60,115 @@ ORV.CharacterModel.addStatusEffect(character, 'bleeding', gameData);
 ORV.State.upsertCharacter(character);
 ```
 
-## What is not built yet
+## Staff Panel (Milestone 2)
 
-The Staff Panel (Dungeon Master tools: authenticated login, Bestiary and
-Codex management, Quest management, Item Creator, Inventory management,
-Character management, DM dice tools, Encounter tools, and image
-management) is the next milestone. A quick note on that in advance: since
-this is a fully static, no-backend site, any login gate built entirely in
-the browser can be bypassed by anyone who opens the page's source, so it
-is a convenience lock for keeping casual players out of the DM tools, not
-real security. If the Staff Panel ever needs to be genuinely protected
-from your own players (not just tidy), that needs a small real backend,
-which is a separate, optional piece of work.
+The Staff Panel lives at `staff/index.html` and is a separate interface
+from the Player Panel, exactly as the brief asked for, not a mode toggle
+on the same page. From the running server, go to
+`http://localhost:8000/staff/index.html`.
+
+**Default login:** username `dm`, password `starstream`. Change it by
+editing `data/staffConfig.json`, see the comment inside that file for the
+one-line browser console command that generates a new password hash.
+
+**Read this before you rely on it:** this is a fully static, no-backend
+site, so any login gate built entirely in the browser can be bypassed by
+anyone who opens the page's source and calls the unlock function directly.
+The password is hashed rather than stored in plain text, which stops a
+casual glance at the file from revealing it, but that is the extent of the
+protection. Treat this as a tidy lock for keeping curious players out of
+the Dungeon Master tools, not real security. If this ever needs to be
+genuinely protected from your own players, that requires a small real
+backend to check the password server-side, which is a separate, optional
+piece of work I did not build here since the brief specified a static
+site.
+
+What the Staff Panel can do:
+
+- **Bestiary Manager**: create, edit, and delete enemies, including stat
+  blocks, weaknesses/resistances/abilities/encounter ideas, and an image
+- **Codex Manager**: create, edit, and delete lore articles across the
+  seven lore-only categories, with an image per article. Skills, Stigmas,
+  Fables, Equipment, and Status Effects still appear in the Codex
+  automatically since those are managed from their own systems
+- **Quest Manager**: create, edit, and delete quests, with a repeatable
+  objectives list and reward checklists pulled from the live item, fable,
+  and stigma catalogs, so a quest can never reward something that does not
+  exist
+- **Item Creator**: create, edit, and delete items in every category, with
+  a repeatable effects editor (the same target/key/type/value shape used
+  throughout the rules engine) and an image
+- **Character Manager**: view every saved character, rename, award or
+  remove coins, edit HP/Stamina/Mana and stats directly, grant or remove
+  Skills/Stigmas/Fables, apply or remove Status Effects, give or remove
+  inventory items, force-unequip gear, and resolve a player's active
+  quests (Complete, which grants the quest's rewards automatically, or
+  Fail)
+- **DM Dice Tools**: the same roll engine as the Player Panel's dice
+  roller, plus a third visibility tier (Secret, which hides the total
+  behind a Reveal button), quick Initiative/Encounter Check buttons, a
+  free-text damage expression roller (e.g. `2d6+3`), named saved presets,
+  and a full log
+- **Encounter Tools**: start a named encounter, add existing players or
+  spawn enemies from the Bestiary, roll or set initiative, track HP with
+  heal/damage buttons, and apply status effects. Effects applied to a
+  player combatant are written straight to that player's real saved
+  character, so it shows up on their profile immediately; spawned enemies
+  only exist for the life of the encounter
+
+**How staff content reaches the Player Panel:** since there is no backend,
+edits made in the Staff Panel are stored as overrides in this browser's
+local storage and layered on top of the shipped JSON every time either
+page loads, so new or edited items, enemies, codex articles, and quests
+show up in the Player Panel automatically once the player reloads the
+page. Deleting a shipped entry is tracked as a tombstone rather than
+actually rewriting the JSON file, since a static site cannot write to its
+own files, restoring the original JSON files at any point clears every
+override.
+
+**Known gaps in this milestone:** enemy drops and related-enemy links, and
+codex cross-links between articles, are preserved when editing an existing
+entry but are not yet exposed as fields in the Staff Panel's forms, they
+can still be set by editing the JSON directly or through the browser
+console. "Image Management" is handled inline on each entity's own edit
+form (upload the enemy's image while editing the enemy, and so on) rather
+than as a separate media-library screen, which keeps the upload next to
+the thing it belongs to instead of a disconnected step.
 
 ## Project structure
 
 ```
-index.html              Entry point, loads everything in order
+index.html                 Player Panel entry point
+staff/index.html           Staff Panel entry point, separate interface
 css/
-  tokens.css            Colors, fonts, spacing (edit this to reskin)
-  base.css              Reset, typography, layout shell, keyframes
-  components.css        Buttons, cards, tabs, modal, toasts, forms, bars
-  player.css            Layouts specific to each Player Panel view
+  tokens.css                Colors, fonts, spacing (edit this to reskin)
+  base.css                  Reset, typography, layout shell, keyframes
+  components.css            Buttons, cards, tabs, modal, toasts, forms, bars
+  player.css                Layouts specific to each Player Panel view
+  staff.css                 Data table styling for the Staff Panel
 data/
-  rules.json            Stats, skills, formulas, costs (edit this to rebalance)
-  traits.json           The 20 starting positive/negative traits
-  statusEffects.json    All 37 status effects
-  items.json            Seed item catalog
-  skills.json           Seed unlockable ability catalog
-  stigmas.json          Seed stigma catalog
-  fables.json           Seed fable catalog, one per grade
-  bestiary.json         Seed enemy catalog
-  codex.json            Lore-only codex entries
-  quests.json           Seed quest catalog
-assets/icons/sprite.svg Placeholder line-art icons, swap for real art later
-js/core/                Utilities, UI helpers, storage, state, data loading
-js/modules/             One file per feature: character creation, profile,
-                        dice roller, skill checks, entry browser, bestiary,
-                        codex
-js/app.js               Boots the app, builds the nav, routes between views
+  rules.json                Stats, skills, formulas, costs (edit this to rebalance)
+  traits.json                The 20 starting positive/negative traits
+  statusEffects.json         All 37 status effects
+  items.json                 Seed item catalog
+  skills.json                Seed unlockable ability catalog
+  stigmas.json                Seed stigma catalog
+  fables.json                 Seed fable catalog, one per grade
+  bestiary.json               Seed enemy catalog
+  codex.json                  Lore-only codex entries
+  quests.json                 Seed quest catalog
+  staffConfig.json            Staff username and hashed password
+assets/icons/sprite.svg       Placeholder line-art icons, swap for real art later
+js/core/                      Utilities, UI helpers, storage, content overrides,
+                              state, data loading, shared by both panels
+js/modules/                   Player Panel features: character creation, hub,
+                              profile, dice roller, skill checks, entry browser,
+                              bestiary, codex
+js/staff/                     Staff Panel features: auth, shared CRUD table/form
+                              helpers, bestiary/codex/quest/item managers,
+                              character manager, dice tools, encounter tools
+js/app.js                     Boots the Player Panel
+js/staff/staffApp.js          Boots the Staff Panel
 ```
 
 ## Adding content

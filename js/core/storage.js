@@ -11,7 +11,10 @@
     CHARACTERS: 'orv_characters',
     ACTIVE_CHARACTER: 'orv_active_character_id',
     ROLL_HISTORY: 'orv_roll_history',
-    STAFF_SESSION: 'orv_staff_session'
+    STAFF_SESSION: 'orv_staff_session',
+    STAFF_ROLL_HISTORY: 'orv_staff_roll_history',
+    DICE_PRESETS: 'orv_staff_dice_presets',
+    ACTIVE_ENCOUNTER: 'orv_staff_active_encounter'
   };
 
   function safeGet(key, fallback) {
@@ -83,6 +86,64 @@
     return history;
   }
 
+  /* ---------------- Staff session (cleared when the browser tab closes) ---------------- */
+
+  function isStaffAuthenticated() {
+    try {
+      return window.sessionStorage.getItem(KEYS.STAFF_SESSION) === 'true';
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function setStaffAuthenticated(value) {
+    try {
+      window.sessionStorage.setItem(KEYS.STAFF_SESSION, value ? 'true' : 'false');
+    } catch (err) {
+      console.error('Could not set staff session', err);
+    }
+  }
+
+  /* ---------------- Staff dice log and presets ---------------- */
+
+  function getStaffRollHistory() {
+    return safeGet(KEYS.STAFF_ROLL_HISTORY, []);
+  }
+
+  function addStaffRollHistoryEntry(entry) {
+    var history = getStaffRollHistory();
+    history.unshift(entry);
+    if (history.length > 80) history = history.slice(0, 80);
+    safeSet(KEYS.STAFF_ROLL_HISTORY, history);
+    return history;
+  }
+
+  function updateStaffRollHistory(history) {
+    safeSet(KEYS.STAFF_ROLL_HISTORY, history);
+  }
+
+  function getDicePresets() {
+    return safeGet(KEYS.DICE_PRESETS, []);
+  }
+
+  function saveDicePresets(presets) {
+    safeSet(KEYS.DICE_PRESETS, presets);
+  }
+
+  /* ---------------- Active encounter ---------------- */
+
+  function getActiveEncounter() {
+    return safeGet(KEYS.ACTIVE_ENCOUNTER, null);
+  }
+
+  function saveActiveEncounter(encounter) {
+    safeSet(KEYS.ACTIVE_ENCOUNTER, encounter);
+  }
+
+  function clearActiveEncounter() {
+    safeSet(KEYS.ACTIVE_ENCOUNTER, null);
+  }
+
   ORV.Storage = {
     KEYS: KEYS,
     getCharacters: getCharacters,
@@ -91,7 +152,17 @@
     getActiveCharacterId: getActiveCharacterId,
     setActiveCharacterId: setActiveCharacterId,
     getRollHistory: getRollHistory,
-    addRollHistoryEntry: addRollHistoryEntry
+    addRollHistoryEntry: addRollHistoryEntry,
+    isStaffAuthenticated: isStaffAuthenticated,
+    setStaffAuthenticated: setStaffAuthenticated,
+    getStaffRollHistory: getStaffRollHistory,
+    addStaffRollHistoryEntry: addStaffRollHistoryEntry,
+    updateStaffRollHistory: updateStaffRollHistory,
+    getDicePresets: getDicePresets,
+    saveDicePresets: saveDicePresets,
+    getActiveEncounter: getActiveEncounter,
+    saveActiveEncounter: saveActiveEncounter,
+    clearActiveEncounter: clearActiveEncounter
   };
 
 })(window.ORV = window.ORV || {});

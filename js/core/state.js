@@ -7,7 +7,8 @@
   'use strict';
 
   var state = {
-    gameData: null,        // loaded JSON: rules, traits, statusEffects, items, skills, stigmas, fables, bestiary, codex, quests
+    baseGameData: null,    // pristine JSON as loaded, before staff overrides are layered on
+    gameData: null,        // baseGameData + ContentStore overrides applied, this is what every view reads
     characters: [],        // all saved characters
     activeCharacterId: null,
     currentView: 'hub',

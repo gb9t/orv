@@ -67,7 +67,7 @@
       grid.innerHTML = filtered.map(function (entry) {
         return (
           '<div class="card card--interactive" data-entry-id="' + entry.id + '">' +
-            '<div class="card__header">' + UI.icon(entry.icon || 'icon-book') + (entry.badge || '') + '</div>' +
+            '<div class="card__header">' + UI.mediaHtml(entry.imageUrl, entry.icon || 'icon-book') + (entry.badge || '') + '</div>' +
             '<h3>' + Utils.escapeHtml(entry.name) + '</h3>' +
             '<p class="text-muted" style="font-size:0.85rem">' + (entry.summaryHtml || '') + '</p>' +
           '</div>'

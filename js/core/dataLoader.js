@@ -7,17 +7,19 @@
 (function (ORV) {
   'use strict';
 
+  var BASE = window.ORV_BASE_PATH || '';
+
   var FILES = {
-    rules: 'data/rules.json',
-    traits: 'data/traits.json',
-    statusEffects: 'data/statusEffects.json',
-    items: 'data/items.json',
-    skills: 'data/skills.json',
-    stigmas: 'data/stigmas.json',
-    fables: 'data/fables.json',
-    bestiary: 'data/bestiary.json',
-    codex: 'data/codex.json',
-    quests: 'data/quests.json'
+    rules: BASE + 'data/rules.json',
+    traits: BASE + 'data/traits.json',
+    statusEffects: BASE + 'data/statusEffects.json',
+    items: BASE + 'data/items.json',
+    skills: BASE + 'data/skills.json',
+    stigmas: BASE + 'data/stigmas.json',
+    fables: BASE + 'data/fables.json',
+    bestiary: BASE + 'data/bestiary.json',
+    codex: BASE + 'data/codex.json',
+    quests: BASE + 'data/quests.json'
   };
 
   function loadOne(key, path) {

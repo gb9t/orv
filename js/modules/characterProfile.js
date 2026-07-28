@@ -221,7 +221,7 @@
       return (
         '<div class="card" style="padding:12px">' +
           '<div class="flex-between">' +
-            '<div class="flex items-center gap-sm">' + UI.icon(def.icon) +
+            '<div class="flex items-center gap-sm">' + UI.mediaHtml(def.image, def.icon, 'icon') +
               '<div><strong>' + Utils.escapeHtml(def.name) + '</strong>' +
               '<div class="text-muted" style="font-size:0.78rem">' + Utils.escapeHtml(def.description) + '</div></div></div>' +
             '<span class="badge" style="color:var(--rarity-' + def.rarity + ');border-color:var(--rarity-' + def.rarity + ')">' + def.rarity + '</span>' +

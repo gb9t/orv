@@ -71,19 +71,28 @@
     renderer(section);
   }
 
+  function refreshGameData() {
+    var state = ORV.State.getState();
+    if (!state.baseGameData) return;
+    var gameData = ORV.ContentStore.applyAllOverrides(state.baseGameData);
+    ORV.State.setState({ gameData: gameData });
+    renderCurrentView();
+  }
+
   function boot() {
     navEl = document.querySelector('[data-role="app-nav"]');
     mainEl = document.querySelector('[data-role="app-main"]');
 
     UI.showBootLoader('Opening System Window');
 
-    ORV.DataLoader.loadAll().then(function (gameData) {
+    ORV.DataLoader.loadAll().then(function (baseGameData) {
       var characters = ORV.Storage.getCharacters();
       var activeId = ORV.Storage.getActiveCharacterId();
       var startView = activeId && characters.some(function (c) { return c.id === activeId; }) ? 'profile' : 'hub';
 
       ORV.State.setState({
-        gameData: gameData,
+        baseGameData: baseGameData,
+        gameData: ORV.ContentStore.applyAllOverrides(baseGameData),
         characters: characters,
         activeCharacterId: activeId,
         currentView: startView
@@ -99,6 +108,7 @@
 
   ORV.App = {
     navigateTo: navigateTo,
+    refreshGameData: refreshGameData,
     boot: boot
   };
 

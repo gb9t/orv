@@ -14,6 +14,7 @@
     return gameData.codex.entries.map(function (entry) {
       return {
         id: entry.id, name: entry.name, icon: 'icon-book', category: entry.category,
+        imageUrl: entry.image || null,
         searchText: [entry.name, entry.body, (entry.tags || []).join(' ')].join(' '),
         summaryHtml: Utils.escapeHtml(entry.body.slice(0, 110)) + (entry.body.length > 110 ? '...' : ''),
         detailHtml: '<p>' + Utils.escapeHtml(entry.body) + '</p>' +
@@ -62,6 +63,7 @@
     return gameData.items.items.map(function (i) {
       return {
         id: i.id, name: i.name, icon: i.icon, category: 'equipment',
+        imageUrl: i.image || null,
         searchText: [i.name, i.description, i.category].join(' '),
         summaryHtml: Utils.titleCase(i.category) + ' &middot; ' + i.rarity,
         detailHtml: '<p>' + Utils.escapeHtml(i.description) + '</p><p class="font-mono text-muted">Weight ' + i.weight + ' &middot; Sell value ' + i.sellValue + '</p>'

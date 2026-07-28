@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Window // Staff Panel</title>
+
+<!-- This page lives one folder below the project root, so shared scripts
+     need to know to look up a level for data/ and assets/. -->
+<script>window.ORV_BASE_PATH = '../';</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/player.css">
+<link rel="stylesheet" href="../css/staff.css">
+</head>
+<body>
+
+<div id="staff-root"></div>
+
+<!-- Core, in dependency order -->
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/ui.js"></script>
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/contentStore.js"></script>
+<script src="../js/core/state.js"></script>
+<script src="../js/core/dataLoader.js"></script>
+
+<!-- Shared rules engine and dice engine, reused from the Player Panel -->
+<script src="../js/modules/characterModel.js"></script>
+<script src="../js/modules/diceRoller.js"></script>
+
+<!-- Staff-only modules -->
+<script src="../js/staff/staffUI.js"></script>
+<script src="../js/staff/staffAuth.js"></script>
+<script src="../js/staff/itemCreator.js"></script>
+<script src="../js/staff/bestiaryManager.js"></script>
+<script src="../js/staff/codexManager.js"></script>
+<script src="../js/staff/questManager.js"></script>
+<script src="../js/staff/characterManager.js"></script>
+<script src="../js/staff/diceTools.js"></script>
+<script src="../js/staff/encounterTools.js"></script>
+
+<!-- Bootstrap, last -->
+<script src="../js/staff/staffApp.js"></script>
+
+</body>
+</html>

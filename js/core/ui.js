@@ -21,7 +21,16 @@
   }
 
   function icon(name, className) {
-    return '<svg class="icon ' + (className || '') + '"><use href="assets/icons/sprite.svg#' + name + '"></use></svg>';
+    var base = window.ORV_BASE_PATH || '';
+    return '<svg class="icon ' + (className || '') + '"><use href="' + base + 'assets/icons/sprite.svg#' + name + '"></use></svg>';
+  }
+
+  /** Renders an uploaded image if present, otherwise falls back to a placeholder icon. Used everywhere an entity can have staff-uploaded art. */
+  function mediaHtml(imageUrl, iconName, className) {
+    if (imageUrl) {
+      return '<img class="' + (className || '') + '" src="' + imageUrl + '" alt="">';
+    }
+    return icon(iconName || 'icon-book', className);
   }
 
   /* ---------------- Toasts ---------------- */

@@ -22,6 +22,7 @@
 
   function buildDetailHtml(enemy) {
     return (
+      (enemy.images && enemy.images[0] ? '<img src="' + enemy.images[0] + '" style="width:100%;border-radius:var(--radius-md);margin-bottom:12px;">' : '') +
       threatMeterHtml(enemy.threatRating) +
       '<p>' + Utils.escapeHtml(enemy.description) + '</p>' +
       '<h3>Lore</h3><p class="text-muted">' + Utils.escapeHtml(enemy.lore) + '</p>' +
@@ -49,6 +50,7 @@
         id: enemy.id,
         name: enemy.name,
         icon: 'icon-enemy',
+        imageUrl: enemy.images && enemy.images[0] ? enemy.images[0] : null,
         category: tier.id,
         badge: '<span class="badge text-danger">' + tier.label + '</span>',
         searchText: [enemy.name, enemy.description, enemy.lore, enemy.habitat].join(' '),

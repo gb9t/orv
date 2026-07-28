@@ -47,7 +47,7 @@
         '<span class="app-nav__brand-sub">Tabletop Interface</span>' +
       '</div>' +
       '<ul class="app-nav__list" data-role="nav-list"></ul>' +
-      '<div class="app-nav__footer">Data is saved to this browser only.<br>Staff Panel arrives in the next build.</div>';
+      '<div class="app-nav__footer">Data is saved to this browser only.<br><a href="staff/index.html">Dungeon Master? Open Staff Panel</a></div>';
 
     var list = navEl.querySelector('[data-role="nav-list"]');
     NAV_ITEMS.forEach(function (item) {
